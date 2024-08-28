@@ -1,0 +1,267 @@
+
+/* ------------------- *\
+   Resets               
+\* ------------------- */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0; 
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+/* set up the body */
+body {
+    font-family: var(--ff-sans-normal);
+    font-size: var(--fs-400);
+    color: hsl( var(--clr-white) );
+    background-color: hsl( var(--clr-dark) );
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* ------------------- *\
+   Custom properties               
+\* ------------------- */
+
+:root {
+    /* text */
+    --crl-text-dark-blue: hsl(238, 29%, 16%);
+    --clr-text-soft-red: hsl(14, 88%, 65%);
+    --crl-text-dark-grayish-blue: hsl(237, 12%, 33%);
+    --clr-text-grayish-blue: hsl(240, 6%, 50%);
+
+    /* Gradient */
+    --clr-gradient-violet:hsl(273, 75%, 66%) ;
+    --clr-gradient-blue:  hsl(240, 73%, 65%) ;
+
+    /* Dividers */
+    --clr-divider-grayish-blue: hsl(240, 5%, 91%);
+
+    /* Typography */
+    --fs-body: .9rem;
+    --fs-heading: 2.25rem;
+    --ff-main: "Kumbh Sans", sans-serif;
+    --fw-normal: 400;
+    --fw-bold:   700;
+}
+
+/* ------------------- *\
+    General styling               
+\* ------------------- */
+
+body {
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 10rem 1.5rem;
+    font-family: var(--ff-main);
+    background-image: linear-gradient(var(--clr-gradient-violet), var(--clr-gradient-blue));
+    color: var(--crl-text-dark-grayish-blue);
+    font-size: var(--fs-body);
+}
+
+.card {
+   background-color: white;
+   width: 21.5rem;
+   border-radius: 1.5rem;
+   background-image: url(images/bg-pattern-mobile.svg);
+   background-repeat: no-repeat;
+   background-size: 250px;
+   background-position: center 0.625rem;
+   padding-bottom: 1rem;
+   box-shadow: 0 20px 30px rgb(89, 73, 146) ;
+}
+
+.card__box {
+    display: none;
+}
+
+.card__image img {
+    width: 100%;
+    height: auto;
+    max-width: 16rem;
+    margin: -7.3rem auto 2rem;
+    display: block;
+}
+
+.card__text {
+    padding-inline: .5rem;
+}
+
+
+/* ------------------- *\
+    Utility classes               
+\* ------------------- */
+
+.heading {
+    color: var(--crl-text-dark-blue);
+    font-weight: var(--fw-bold);
+    text-align: center;
+    font-size: var(--fs-heading);
+    text-transform: uppercase;
+    padding-top: 1.5rem;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bold {
+    font-weight: var(--fw-bold);
+    color: var(--crl-text-dark-blue);
+}
+
+.arrow-up {
+    transform: rotate(180deg);
+    display: none;
+}
+
+/* --------------------------- *\
+   Accordion component styles               
+\* --------------------------- */
+
+.accordion__question {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    text-align: left;
+    font-size: inherit;
+    width: 100%;
+}
+
+.accordion__question:hover {
+    color: var(--clr-text-soft-red);
+}
+
+.accordion {
+    padding: 2rem 1.5rem;
+    display: grid;
+    gap: .5rem;
+}
+
+.accordion__item {
+    display: grid;
+    gap: .5rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--clr-divider-grayish-blue);
+}
+
+.accordion-collapse { display: none; }
+.accordion-collapse.show { display: block;}
+
+.accordion__answer {
+    color: var(--clr-text-grayish-blue);
+}
+
+/* ------------------- *\
+    Media Queries               
+\* ------------------- */
+
+@media (min-width: 768px) {
+    .card {
+        width: 34.375rem;
+    }
+}
+
+/* desktop */
+
+@media (min-width: 1024px) {
+
+    .heading {
+        text-align: left;
+        padding-left: 1.5rem;
+
+    }
+
+    body {
+        padding: 5rem;
+    }
+
+    .card {
+        display: flex;
+        margin: 0rem auto;
+        width: 56rem;
+        height: 31rem;
+        background-image: url(images/bg-pattern-desktop.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom -8rem left -32.5rem ;
+        position: relative;
+    }
+
+    .card__text {
+        padding-inline: 1rem .5rem;
+        padding-block: 3rem;
+    }
+
+    .accordion {
+        padding-top: 2rem;
+        padding-right: 5rem;
+    }
+
+    .card__image,
+    .card__text {
+        flex: 1;
+    }
+
+    .card__image {
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-top: 2.25rem;
+    }
+
+    .card__box {
+        display: block;
+        position: absolute;
+        left: 0;
+        transform: translateX(-48.5%) translateY(-30%);
+        top: 50%;
+        z-index: 1;
+    }
+
+    .card__image img {
+        transform: translateX(-4rem) translateY(-1.2rem);
+        max-width: 56rem;
+        margin: auto;
+    }
+
+}
